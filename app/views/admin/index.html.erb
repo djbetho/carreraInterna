@@ -1,0 +1,112 @@
+  
+
+ 
+
+
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-md-6">
+<div class="card">
+<header class="card-header">
+Crear Usuarios
+ </header>
+<article class="card-body">
+ <%= form_with(model: @user, url: admin_index_path, method: :post) do |f| %>
+ 	<div class="form-row">
+		<div class="col form-group">
+			<label>Name </label>   
+            <%= f.text_field  :name, placeholder: "Name",class:"form-control" %>
+		</div> <!-- form-group end.// -->
+		<div class="col form-group">
+			<label>Email</label>
+            <%= f.email_field  :email, placeholder: "Email",class:"form-control" %>
+		</div> <!-- form-group end.// -->
+        <div class="col form-group">
+			<label>Phone</label>
+            <%= f.text_field  :phone, placeholder: "Phone",class:"form-control" %>
+		</div>
+        <div class="col form-group">
+			<label>Nickname</label>
+            <%= f.text_field  :nickname, placeholder: "Nickname",class:"form-control" %>
+		</div>
+        <div class="col form-group">
+			<label>Address</label>
+            <%= f.text_field  :address, placeholder: "Address",class:"form-control" %>
+		</div>
+         <div class="col form-group">
+			 
+
+            <div class="field">
+                <%= f.label :avatar %><br />
+                <%= f.file_field :avatar, autocomplete: "avatar", class:"form-control" %>
+            </div>
+             
+		</div> 
+         
+	</div> <!-- form-row end.// -->
+	 
+	 
+	<div class="form-row">
+		<div class="form-group col-md-6">
+		  <label>Password</label>
+        <%= f.password_field :password,placeholder:"Password" ,class:"form-control"%>
+	    </div>
+        <div class="form-group col-md-6">
+         
+		  <label>Confirm Password</label>
+        <%= f.password_field :password_confirmation, placeholder: "Password confirmation",class:"form-control"%>
+
+		</div> <!-- form-group end.// -->
+		<div class="form-group col-md-6">
+		  <label>Rol</label>
+            <%= f.select :role, Btouser.roles.keys.map {|w| [w.humanize,w]}, include_blank: "Selecciona un Rol" ,class:"form-control"%>
+		</div> <!-- form-group end.// -->
+	</div> <!-- form-row.// -->
+ 
+  
+   <% end %>  
+</article> <!-- card-body end .// -->
+</div> <!-- card.// -->
+</div> <!-- col.//-->
+</div> <!-- row.//-->
+</div> 
+
+<div class="panel panel-primary filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">Usuarios</h3>
+                <div class="pull-right">
+                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr class="filters">
+                        <th><input type="text" class="form-control" placeholder="Name" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Email" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Phone" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Nickname" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Address" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Avatar" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Rol" disabled></th>
+                        <th><input type="text" class="form-control" placeholder="Accion" disabled></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @users.each do |user|%>
+                         <%= form_for(user, url: admin_path(user),remote: true, method: :patch) do |f| %>
+                    <tr>
+                        <td><%= f.text_field :name  %></td>
+                        <td><%= f.text_field :email  %></td>
+                        <td><%= f.text_field :phone  %></td>
+                        <td><%= f.text_field :nickname  %></td>
+                        <td><%= f.text_field :address  %></td>
+                        <td> <%= f.label :avatar %> <%= f.file_field :avatar, autocomplete: "avatar", class:"form-control" %></td>
+                        <td><%= f.select(:role, Btouser.roles.keys.map { |w| [w.humanize, w]} )%></td>
+                        <td>  <%= f.submit "Update"  %></td>
+                    </tr>
+                         <% end %>
+                    <% end %>
+                   
+                </tbody>
+            </table>
+        </div>
