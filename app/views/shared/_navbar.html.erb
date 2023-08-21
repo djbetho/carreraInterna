@@ -12,6 +12,8 @@
          
 
         <% end %>
+         <%= link_to "Ofertas", admin_index_path  %>
+          <%= link_to "Mis Postulaciones", admin_index_path  %>
       </li>
 
       </ul>
@@ -19,8 +21,17 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 
+
           <% if btouser_signed_in? %> 
-              Hola <%= current_btouser.name %> 
+        
+        <div class="icon-badge-group">
+            <div class="icon-badge-container">
+                <i class="far fa-envelope-open icon-badge-icon"></i>
+                <div class="icon-badge">1</div>
+            </div>
+        </div>
+
+               <%= current_btouser.nickname %>    
             <% if current_btouser.avatar.persisted? %>
               <%=  image_tag current_btouser.avatar, class:'rounded-circle', height: "40px", width: "40px"  %> 
             <% else%>

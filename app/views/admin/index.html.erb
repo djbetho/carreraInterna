@@ -78,37 +78,37 @@
   </div>
 </div>
 
-  
- <table class="table table-hover">
- <thead>
-    <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Nickname</th>
-      <th scope="col">Address</th>
-      <th scope="col">Avatar</th>
-      <th scope="col">Rol</th>
-      <th scope="col">Accion</th>
+  <div class="table-responsive">
+ <table class="table table-hover "  >
+        <thead>
+            <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+             <th scope="col">Address</th>
+            <th scope="col">Avatar</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Accion</th>
 
-    </tr>
-  </thead>
-  <tbody class="table-group-divider">
-   <% @users.each do |user|%>
-        <%= form_for(user, url: admin_path(user),remote: true, method: :patch) do |f| %>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        <% @users.each do |user|%>
+                <%= form_for(user, url: admin_path(user),remote: true, method: :patch) do |f| %>
 
-    <tr>
-        <td><%= f.text_field :name  %></td>
-        <td><%= f.text_field :email  %></td>
-        <td><%= f.text_field :phone  %></td>
-        <td><%= f.text_field :nickname  %></td>
-        <td><%= f.text_field :address  %></td>
-        <td><%= f.file_field :avatar,  class:"form-control" %></td>
-        <td><%= f.select(:role, Btouser.roles.keys.map { |w| [w.humanize, w]} )%></td>
-        <td><%= f.submit 'Edit' %></td>
-    </tr>
-        <% end %>
-    <% end %>
-  </tbody>
-  
+            <tr>
+                <td><%= f.text_field :name  %></td>
+                <td><%= f.text_field :email  %></td>
+                <td><%= f.text_field :phone  %></td>
+                 <td><%= f.text_field :address  %></td>
+                <td><%= f.file_field :avatar,  class:"form-control" %></td>
+                <td><%= f.select(:role, Btouser.roles.keys.map { |w| [w.humanize, w]} )%></td>
+                  <td><%# f.submit 'Edit' %> <i class="fa-regular fa-pen-to-square"></i></td>  
+                <td><i class="fa-solid fa-user-minus"></i></td>
+            </tr>
+                <% end %>
+            <% end %>
+        </tbody>
+        
   </table>
+  </div>
