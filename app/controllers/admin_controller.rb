@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_action :set_user, only: [:update]
+  before_action :set_user, only: [:update, :destroy]
   before_action :authenticate_btouser!
   before_action :authorize_admin!
 
@@ -23,6 +23,15 @@ class AdminController < ApplicationController
     else
       redirect_to admin_index_path, notice:'Unable to update user'
     end
+  end
+
+  def destroy
+    @user.destroy
+       respond_to do |format|
+      format.html { redirect_to posts_url, notice: "User was successfully destroyed." }
+      format.json { head :no_content }
+    end
+
   end
 
 

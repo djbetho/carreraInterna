@@ -1,10 +1,1 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-<% if btouser_signed_in? %>
-    <%= link_to "Admin", admin_index_path if current_btouser.admin? %>
-    <%= link_to "Sign Out", destroy_btouser_session_path, data: { turbo_method: :delete} %>
-<% else %>
-    <%= link_to "Sign In", new_btouser_session_path %>
-    <%= link_to "Sign Up", new_btouser_registration_path%>
-<% end %>
+ 
