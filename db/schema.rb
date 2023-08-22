@@ -59,14 +59,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_042431) do
     t.index ["reset_password_token"], name: "index_btousers_on_reset_password_token", unique: true
   end
 
-  create_table "images", force: :cascade do |t|
+  create_table "imges", force: :cascade do |t|
     t.text "url"
     t.string "context"
     t.string "imageable_type", null: false
     t.bigint "imageable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable"
+    t.index ["imageable_type", "imageable_id"], name: "index_imges_on_imageable"
   end
 
   create_table "offers", force: :cascade do |t|
