@@ -1,0 +1,15 @@
+
+<h1>Mis postulaciones</h1>
+     <% @oferta_id.each do |f| %>      
+      <% @resultado = Offer.find(f.offer_id) %>
+      <div class="card">
+        <h5 class="card-header"> <%= @resultado.titulo%></h5>
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text"> <%= @resultado.descripcion%></p>
+           
+        </div>
+      </div>
+
+ <% end %>
+      

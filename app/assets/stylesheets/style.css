@@ -34,3 +34,21 @@
     top: -5px; /* changed */
     left: 10px; /* changed */
 }
+.home {
+ 
+     background-image: url("https://mdbootstrap.com/img/new/fluid/city/018.jpg");
+        height: 150vh;
+  
+}
+.container-fluid {
+     border: 2px solid black;
+    display: flex;
+      justify-content: center;	
+}
+
+
+.col {
+   
+    border: 0px solid black;
+
+}

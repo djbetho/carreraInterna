@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Offers</h1>
+
+<div id="offers">
+  <% @offers.each do |offer| %>
+    <%= render offer %>
+    <p>
+ 
+
+      <% Offer::Kinds.each do |kind| %>
+
+        <%= button_to "#{Offer::KindsSpanish[kind]}", user_reaction_path(btouser: current_btouser,offer_id: offer, reaction_type:"post", kind: kind), method: :post %>
+      <% end %>
+
+      <%= link_to "Show this offer", offer %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New offer", new_offer_path %>
